@@ -131,14 +131,18 @@
       </section>
       <section>
         <h2>Download</h2>
-        <button>download</button>
+        <button id="download-btn">download</button>
       </section>
     </div>
 
     <script>
       const lightThemeSelect = document.querySelector("#light-theme");
       const darkThemeSelect = document.querySelector("#dark-theme");
+      const themeToggler = document.querySelector("#theme-toggler");
+
       const fontStackSelect = document.querySelector("#font-stack");
+
+      const downloadBtn = document.querySelector("#download-btn");
 
       const lightThemes = [
         {
@@ -161,6 +165,8 @@
       });
 
       lightThemeSelect.addEventListener("input", (ev) => {
+        themeToggler.checked = false;
+        setDark(false);
         console.log(
           `selected light theme ${JSON.stringify(
             lightThemes[ev.target.value],
@@ -177,6 +183,21 @@
           background: "",
         },
       ];
+
+      const systemSettingDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+      function setDark(bool) {
+        document.documentElement.setAttribute("data-dark", bool + "");
+      }
+
+      themeToggler.checked = systemSettingDark;
+      setDark(systemSettingDark);
+
+      themeToggler.addEventListener("change", (ev) => {
+        setDark(ev.target.checked);
+      });
 
       const fonts = {
         "System UI": "system-ui, sans-serif",
@@ -218,6 +239,26 @@
 
       fontStackSelect.addEventListener("input", (ev) => {
         document.documentElement.style.setProperty("--font", ev.target.value);
+      });
+
+      function download(filename, text) {
+        let element = document.createElement("a");
+        element.setAttribute(
+          "href",
+          "data:text/plain;charset=utf-8," + encodeURIComponent(text)
+        );
+        element.setAttribute("download", filename);
+
+        element.style.display = "none";
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+      }
+
+      downloadBtn.addEventListener("click", (ev) => {
+        download("R.config.css", "//TODO");
       });
     </script>
   </body>

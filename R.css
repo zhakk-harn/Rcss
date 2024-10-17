@@ -62,15 +62,15 @@ main {
 aside {
   grid-area: aside;
 
+  /* https://defensivecss.dev/tip/position-sticky-grid/ */
+  align-self: start;
+  position: sticky;
+  top: 1rem;
+
   a,
   a:visited {
     /* color: #db4d3f; */
     color: var(--color);
-  }
-
-  & > *:only-child {
-    position: sticky;
-    top: 1rem;
   }
 }
 footer {
