@@ -7,30 +7,47 @@
     <link rel="stylesheet" href="R.config.css" />
     <link rel="stylesheet" href="R.css" />
     <style>
-      /* overwritte specific to the configurator */
-      body {
-        grid:
-          "header	header	config" auto
-          "aside	main		config" 1fr
-          "footer	footer	config" auto
-          / 1fr 75ch 1fr;
-      }
-      @media screen and (width <= 95ch) {
-        body {
-          grid:
-            "header config" auto
-            "main   config" 1fr
-            "footer config" auto
-            / 1fr;
-        }
-        aside {
-          display: none;
-        }
+      :root {
+        --shadow-color: 0deg 0% 0%;
+        --shadow-elevation-low: -0.6px 0px 0.7px hsl(var(--shadow-color) / 0.1),
+          -1px 0.1px 1.1px -1.2px hsl(var(--shadow-color) / 0.1),
+          -2.5px 0.2px 2.8px -2.5px hsl(var(--shadow-color) / 0.1);
+        --shadow-elevation-medium: -0.6px 0px 0.7px
+            hsl(var(--shadow-color) / 0.11),
+          -2px 0.1px 2.3px -0.8px hsl(var(--shadow-color) / 0.11),
+          -5.1px 0.3px 5.7px -1.7px hsl(var(--shadow-color) / 0.11),
+          -12.4px 0.8px 14px -2.5px hsl(var(--shadow-color) / 0.11);
+        --shadow-elevation-high: -0.6px 0px 0.7px hsl(var(--shadow-color) / 0.1),
+          -3.6px 0.2px 4.1px -0.4px hsl(var(--shadow-color) / 0.1),
+          -6.8px 0.4px 7.7px -0.7px hsl(var(--shadow-color) / 0.1),
+          -11.1px 0.7px 12.5px -1.1px hsl(var(--shadow-color) / 0.1),
+          -17.8px 1.1px 20.1px -1.4px hsl(var(--shadow-color) / 0.1),
+          -27.8px 1.7px 31.3px -1.8px hsl(var(--shadow-color) / 0.1),
+          -42.2px 2.6px 47.6px -2.1px hsl(var(--shadow-color) / 0.1),
+          -62.1px 3.9px 70px -2.5px hsl(var(--shadow-color) / 0.1);
       }
 
       #config {
-        grid-area: config;
+        position: fixed;
+        right: 0;
+        top: 0;
+
+        max-width: calc((100% - 75ch) / 2);
+        height: 100vh;
+        overflow: auto;
+
+        box-shadow: var(--shadow-elevation-medium);
+
+        background-color: white;
+
+        /* grid-area: config; */
         padding: 1rem;
+      }
+
+      #open-config {
+        position: fixed;
+        right: 1rem;
+        top: 1rem;
       }
     </style>
   </head>
@@ -104,7 +121,9 @@
       </section>
     </main>
     <footer>legal mentions</footer>
+    <button id="open-config">open</button>
     <div id="config">
+      <button id="close-config">close</button>
       <hgroup>
         <h1>Configurator</h1>
         <p>
@@ -136,6 +155,16 @@
     </div>
 
     <script>
+      const configurator = document.querySelector("#config");
+      const defaultConfigDisplay = getComputedStyle(configurator)["display"];
+
+      document.querySelector("#open-config").addEventListener("click", () => {
+        configurator.style["display"] = defaultConfigDisplay;
+      });
+      document.querySelector("#close-config").addEventListener("click", () => {
+        configurator.style["display"] = "none";
+      });
+
       const lightThemeSelect = document.querySelector("#light-theme");
       const darkThemeSelect = document.querySelector("#dark-theme");
       const themeToggler = document.querySelector("#theme-toggler");
