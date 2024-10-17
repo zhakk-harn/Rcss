@@ -1,3 +1,4 @@
 :root {
-  /* variables */
+  --color: unset;
+  --font: system-ui, sans-serif;
 }
