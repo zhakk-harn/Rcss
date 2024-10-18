@@ -1,14 +1,3 @@
 :root {
-  --dark-color: #db4d3f;
-  --light-color: #43c794;
-
   --font: system-ui, sans-serif;
-}
-
-[data-dark="true"] {
-  --color: var(--dark-color);
-}
-
-[data-dark="false"] {
-  --color: var(--light-color);
 }

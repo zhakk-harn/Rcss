@@ -1,3 +1,19 @@
+:root[data-dark="true"] {
+  --text: var(--dark-text);
+  --background: var(--dark-background);
+  --primary: var(--dark-primary);
+  --link: var(--dark-link);
+  --visited: var(--dark-visited);
+}
+
+:root[data-dark="false"] {
+  --text: var(--light-text);
+  --background: var(--light-background);
+  --primary: var(--light-primary);
+  --link: var(--light-link);
+  --visited: var(--light-visited);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,6 +21,10 @@
 ul,
 ol {
   list-style: none;
+}
+
+html {
+  scroll-padding-top: 2rem;
 }
 
 html,
@@ -20,6 +40,9 @@ body {
   -webkit-font-smoothing: antialiased;
 
   margin: 0;
+
+  color: var(--text);
+  background-color: var(--background);
 
   display: grid;
   grid:
@@ -53,8 +76,8 @@ body {
 header {
   grid-area: header;
   /* background-color: #db4d3f; */
-  background-color: var(--color);
-  color: #eee;
+  background-color: var(--primary);
+  color: var(--background);
 }
 main {
   grid-area: main;
@@ -62,33 +85,32 @@ main {
 aside {
   grid-area: aside;
 
-  /* https://defensivecss.dev/tip/position-sticky-grid/ */
-  align-self: start;
+  align-self: start; /* https://defensivecss.dev/tip/position-sticky-grid/ */
   position: sticky;
   top: 1rem;
 
   a,
   a:visited {
     /* color: #db4d3f; */
-    color: var(--color);
+    color: var(--link);
   }
 }
 footer {
   grid-area: footer;
   /* background-color: #db4d3f; */
-  background-color: var(--color);
-  color: #eee;
+  color: var(--background);
+  background-color: var(--primary);
   padding: 1rem;
 }
 
 a {
   /* color: #db4d3f; */
-  color: var(--color);
+  color: var(--link);
   font-weight: bold;
   text-decoration: none;
 }
 a:visited {
-  color: #551a8b;
+  color: var(--visited);
 }
 a:hover {
   text-decoration: underline;

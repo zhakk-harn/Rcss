@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>R.css</title>
-    <link rel="stylesheet" href="R.config.css" />
     <link rel="stylesheet" href="R.css" />
     <style>
       :root {
@@ -32,18 +31,19 @@
         right: 0;
         top: 0;
 
-        max-width: calc((100% - 75ch) / 2);
+        width: calc((100% - 75ch) / 2);
         height: 100vh;
         overflow: auto;
 
         box-shadow: var(--shadow-elevation-medium);
 
+        color: black;
         background-color: white;
 
-        /* grid-area: config; */
         padding: 1rem;
       }
 
+      #close-config,
       #open-config {
         position: fixed;
         right: 1rem;
@@ -126,10 +126,6 @@
       <button id="close-config">close</button>
       <hgroup>
         <h1>Configurator</h1>
-        <p>
-          This column will not appear in your thing, the footer and the header
-          will continue up to the right edge of the screen
-        </p>
       </hgroup>
 
       <section>
@@ -137,7 +133,7 @@
         <select name="light-theme" id="light-theme"></select>
         <label for="dark-theme"><h2>Dark Theme</h2></label>
         <select name="dark-theme" id="dark-theme"></select>
-        <label for="theme-toggler"><h2>Previewing light/dark theme</h2></label>
+        <label for="theme-toggler"><h2>Previewing dark theme</h2></label>
         <input type="checkbox" name="theme-toggler" id="theme-toggler" />
       </section>
       <section>
@@ -173,21 +169,53 @@
 
       const downloadBtn = document.querySelector("#download-btn");
 
-      const lightThemes = [
-        {
-          name: "R",
-          primary: "",
-          background: "",
-        },
-        {
-          name: "Cobalt",
-          primary: "",
-          background: "",
-        },
-      ];
+      const themes = {
+        light: [
+          {
+            name: "R",
+            text: "#000000",
+            background: "#ffffff",
+            primary: "#db4d3f",
+            link: "#db4d3f",
+            visited: "inherit",
+          },
+          {
+            name: "Dracula",
+            text: "#F8F8F2",
+            background: "#282A36",
+            primary: "#6272A4",
+            link: "#FF79C6",
+            visited: "#BD93F9",
+          },
+        ],
+        dark: [
+          {
+            name: "R",
+            text: "#ffffff",
+            background: "#000000",
+            primary: "#db4d3f",
+            link: "#db4d3f",
+            visited: "inherit",
+          },
+          {
+            name: "Dracula",
+            text: "#F8F8F2",
+            background: "#282A36",
+            primary: "#6272A4",
+            link: "#FF79C6",
+            visited: "#BD93F9",
+          },
+        ],
+      };
 
-      lightThemes.forEach((theme, i) => {
+      themes.light.forEach((theme, i) => {
         lightThemeSelect.insertAdjacentHTML(
+          "beforeend",
+          `<option value="${i}">${theme.name}</option>`
+        );
+      });
+      themes.dark.forEach((theme, i) => {
+        darkThemeSelect.insertAdjacentHTML(
           "beforeend",
           `<option value="${i}">${theme.name}</option>`
         );
@@ -196,22 +224,29 @@
       lightThemeSelect.addEventListener("input", (ev) => {
         themeToggler.checked = false;
         setDark(false);
-        console.log(
-          `selected light theme ${JSON.stringify(
-            lightThemes[ev.target.value],
-            null,
-            2
-          )}`
-        );
+        setTheme(false, themes.light[ev.target.value]);
+      });
+      darkThemeSelect.addEventListener("input", (ev) => {
+        themeToggler.checked = true;
+        setDark(true);
+        setTheme(true, themes.dark[ev.target.value]);
       });
 
-      const darkThemes = [
-        {
-          name: "R",
-          primary: "",
-          background: "",
-        },
-      ];
+      function setTheme(isDark, theme) {
+        Object.entries(theme).forEach(([key, value]) => {
+          if (key == "name") {
+            return;
+          }
+
+          document.documentElement.style.setProperty(
+            `--${isDark ? "dark" : "light"}-${key}`,
+            value
+          );
+        });
+      }
+
+      setTheme(false, themes.light[0]);
+      setTheme(true, themes.dark[0]);
 
       const systemSettingDark = window.matchMedia(
         "(prefers-color-scheme: dark)"
@@ -269,6 +304,10 @@
       fontStackSelect.addEventListener("input", (ev) => {
         document.documentElement.style.setProperty("--font", ev.target.value);
       });
+      document.documentElement.style.setProperty(
+        "--font",
+        Object.values(fonts)[0]
+      );
 
       function download(filename, text) {
         let element = document.createElement("a");
@@ -287,7 +326,14 @@
       }
 
       downloadBtn.addEventListener("click", (ev) => {
-        download("R.config.css", "//TODO");
+        const config =
+          ":root{" + document.documentElement.style.cssText + "}\n\n";
+
+        fetch("R.css")
+          .then((res) => res.text())
+          .then((rcss) => {
+            download("R.custom.css", config + rcss);
+          });
       });
     </script>
   </body>
