@@ -23,6 +23,7 @@
   - details
   - dialog
   - summary
+    - gerer les h1,h2,h3... et meme peut etre tout autre contenu
 
 # At build time
 
