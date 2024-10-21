@@ -16,14 +16,19 @@
   - figcaption
   - menu (as a mirror to ul)
   - cite
+  - pre?
   - code?
   - mark
   - samp
   - iframe (better border)
   - details
   - dialog
-  - summary
-    - gerer les h1,h2,h3... et meme peut etre tout autre contenu
+  - [x] summary
+    - [x] gerer les h1,h2,h3
+    - [ ] ... et meme peut etre tout autre contenu
+
+checkbox as toggle?
+https://codepen.io/morgoe/pen/VvzWQg
 
 # At build time
 

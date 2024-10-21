@@ -37,8 +37,7 @@
 
         box-shadow: var(--shadow-elevation-medium);
 
-        color: black;
-        background-color: white;
+        background-color: var(--background);
 
         padding: 1rem;
       }
@@ -55,7 +54,7 @@
     <header>
       <hgroup>
         <h1>R.css</h1>
-        <p>A tastefully classless CSS framework</p>
+        <p>A classless CSS framework</p>
       </hgroup>
     </header>
     <aside>
@@ -68,59 +67,42 @@
       <section>
         <h2 id="what">What is that?</h2>
         <p>
-          R.css (a.k.a big 'r' CSS) gives you good defaults so you only have to
-          write the HTML. And even then, there are
+          R.css (a.k.a big 'r' CSS) is a class-less CSS framework, which means
+          you only have to care about the HTML. And even then, there are
           <a href="https://github.com/remarkjs/remark-rehype">more</a> or
           <a href="https://github.com/markedjs/marked">less</a> complicated
           solutions to generate HTML from mardown.
         </p>
+        <p>Just don't write a pile of <code>&ltdiv&gt</code> ok?</p>
       </section>
       <section>
         <h2 id="how">How do I use it?</h2>
-        <p>Here is what it does <a href="nowhere">astnehusaneth</a></p>
+        Just pop it into your &lthead&gt.
       </section>
-      <section id="others">
-        <h2>Others</h2>
-        <p>Here is a list of other minimal CSS framework I like</p>
-        <ul>
-          <li><a href="https://oxal.org/projects/sakura/">sakura</a></li>
-          <li><a href="https://simplecss.org/">Simple.css</a></li>
-        </ul>
+      <section>
+        <h2>Elements</h2>
+        <details open>
+          <summary>
+            <h3>summary/details</h3>
+          </summary>
+          You can now use h1,h2,h3... or any other html tag in your summary!
+          Normally that would put the triangle/"arrow" on its own line above
+          your markup.
+        </details>
       </section>
-      <section id="others">
-        <h2>Others</h2>
-        <p>Here is a list of other minimal CSS framework I like</p>
-        <ul>
-          <li><a href="https://oxal.org/projects/sakura/">sakura</a></li>
-          <li><a href="https://simplecss.org/">Simple.css</a></li>
-        </ul>
-      </section>
-      <section id="others">
-        <h2>Others</h2>
-        <p>Here is a list of other minimal CSS framework I like</p>
-        <ul>
-          <li><a href="https://oxal.org/projects/sakura/">sakura</a></li>
-          <li><a href="https://simplecss.org/">Simple.css</a></li>
-        </ul>
-      </section>
-      <section id="others">
-        <h2>Others</h2>
-        <p>Here is a list of other minimal CSS framework I like</p>
-        <ul>
-          <li><a href="https://oxal.org/projects/sakura/">sakura</a></li>
-          <li><a href="https://simplecss.org/">Simple.css</a></li>
-        </ul>
-      </section>
-      <section id="others">
-        <h2>Others</h2>
-        <p>Here is a list of other minimal CSS framework I like</p>
+      <section>
+        <h2 id="others">Others</h2>
+        <p>
+          Here is a list of other minimal CSS framework I like which you may
+          want to consider
+        </p>
         <ul>
           <li><a href="https://oxal.org/projects/sakura/">sakura</a></li>
           <li><a href="https://simplecss.org/">Simple.css</a></li>
         </ul>
       </section>
     </main>
-    <footer>legal mentions</footer>
+    <footer>made by <a href="https://valentindupas.com">Valentin</a></footer>
     <button id="open-config">open</button>
     <div id="config">
       <button id="close-config">close</button>
@@ -173,29 +155,21 @@
         light: [
           {
             name: "R",
-            text: "#000000",
-            background: "#ffffff",
+            text: "#444444",
+            background: "#f3f3f3",
             primary: "#db4d3f",
             link: "#db4d3f",
-            visited: "inherit",
-          },
-          {
-            name: "Dracula",
-            text: "#F8F8F2",
-            background: "#282A36",
-            primary: "#6272A4",
-            link: "#FF79C6",
-            visited: "#BD93F9",
+            visited: "#bf6c64",
           },
         ],
         dark: [
           {
             name: "R",
-            text: "#ffffff",
-            background: "#000000",
+            text: "#eeeeee",
+            background: "#282c34",
             primary: "#db4d3f",
             link: "#db4d3f",
-            visited: "inherit",
+            visited: "#bf6c64",
           },
           {
             name: "Dracula",
