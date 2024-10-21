@@ -208,13 +208,17 @@ input[type="checkbox"] {
   padding: 0.125rem;
   border-radius: 0.25rem;
 }
+input[type="checkbox"]:checked {
+  background-color: var(--primary);
+}
 input[type="checkbox"]::before {
   content: "";
   width: 1rem;
   height: 1rem;
-  clip-path: polygon(28% 38%, 41% 53%, 75% 24%, 86% 38%, 40% 78%, 15% 50%);
+  /* clip-path: polygon(28% 38%, 41% 53%, 75% 24%, 86% 38%, 40% 78%, 15% 50%); */
+  clip-path: polygon(36% 77%, 85% 0, 100% 11%, 37% 100%, 0% 75%, 10% 61%);
   transform: scale(0);
-  background-color: var(--primary);
+  background-color: var(--text);
 }
 input[type="checkbox"]:checked::before {
   transform: scale(1);
