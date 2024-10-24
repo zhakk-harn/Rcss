@@ -116,6 +116,13 @@ a:hover {
   text-decoration-thickness: 0.125em;
 }
 
+header a,
+footer a,
+header a:visited,
+footer a:visited {
+  color: var(--background);
+}
+
 /*
   Remove built-in form typography styles
 */
@@ -205,6 +212,21 @@ button {
   cursor: pointer;
 }
 
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+  color: var(--text);
+  border: 1px solid var(--text);
+  outline: none;
+  padding: 0.5rem;
+
+  background-color: var(--background);
+}
+input:focus {
+  border-color: var(--primary);
+}
+
 /* fuck apple and their pretentious bullshit */
 /* "we don't allow it to guarantee contrast" We're not all as dumb as you are, corporate cock suckers. */
 /* `accent-color` has been in other browser for 40 major updates. */
@@ -217,12 +239,12 @@ button {
 [type="checkbox"] {
   --_accent: var(--primary);
   --_bdw: calc(1em * (4 / 3) / 13.333333);
-  --_bga: Field;
   --_mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="3" stroke="%23000" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10"/></svg>');
 
   appearance: none;
   aspect-ratio: 1;
-  background: var(--_bg, Field);
+  /* background: var(--_bg, Field); */
+  background: var(--_bg, --background);
   border: var(--_bdw) solid var(--_bdc, GrayText);
   border-radius: var(--_bdrs, 0.2em);
   box-sizing: border-box;
@@ -238,19 +260,4 @@ button {
   position: absolute;
   mask: var(--_mask) no-repeat center / contain;
   -webkit-mask: var(--_mask) no-repeat center / contain;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="email"],
-select {
-  color: var(--text);
-  border: 1px solid var(--text);
-  outline: none;
-  padding: 0.5rem;
-
-  background-color: var(--background);
-}
-input:focus {
-  border-color: var(--primary);
 }
