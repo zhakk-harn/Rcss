@@ -236,7 +236,8 @@ input:focus {
   --_bg: var(--_accent);
   --_bga: Field;
 }
-[type="checkbox"] {
+[type="checkbox"],
+[type="checkbox"]:focus {
   --_accent: var(--primary);
   --_bdw: calc(1em * (4 / 3) / 13.333333);
   --_mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="3" stroke="%23000" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10"/></svg>');
