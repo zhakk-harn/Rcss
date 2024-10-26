@@ -234,7 +234,7 @@ input:focus {
 [type="checkbox"]:checked {
   --_bdc: transparent;
   --_bg: var(--_accent);
-  --_bga: Field;
+  --_bga: var(--background, Field);
 }
 [type="checkbox"],
 [type="checkbox"]:focus {
