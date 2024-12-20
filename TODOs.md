@@ -1,3 +1,5 @@
+[ ] separate the elements in the doc by modules and put them in details/summary
+
 - themes
 - elements
   - button

@@ -15,7 +15,8 @@
       content="https://zhakk-harn.github.io/Rcss/rcss.png"
     />
     <title>R.css</title>
-    <link rel="stylesheet" href="R.css" />
+    <link rel="stylesheet" href="R.base.css" />
+    <link rel="stylesheet" href="R.inputs.css" />
     <style>
       :root {
         --shadow-color: 0deg 0% 0%;
@@ -58,6 +59,12 @@
         position: fixed;
         right: 1rem;
         top: 1rem;
+      }
+
+      /* maybe put that in R.css or the class library of layouts */
+      fieldset {
+        display: flex;
+        flex-direction: column;
       }
     </style>
   </head>
@@ -157,6 +164,30 @@
           These come from the
           <a href="https://modernfontstacks.com/">Modern Font Stacks project</a>
         </p>
+      </section>
+      <section>
+        <h2>Modules</h2>
+        <p>
+          The base CSS included with R.css is handling anything related to web
+          pages but not web apps. Buttons are the only thing which is meant to
+          be interactive and still be in the base (because that enables you to
+          make button-looking links by just wrapping a button with an anchor
+          tag).
+        </p>
+        <fieldset>
+          <div>
+            <label for="Inputs">Inputs</label>
+            <input type="checkbox" name="inputs-module" id="" />
+          </div>
+          <small>In case you need forms and user inputs.</small>
+        </fieldset>
+        <fieldset>
+          <div>
+            <label for="Inputs">Inputs</label>
+            <input type="checkbox" name="inputs-module" id="" />
+          </div>
+          <small>In case you need forms and user inputs.</small>
+        </fieldset>
       </section>
       <section>
         <h2>Download</h2>

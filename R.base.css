@@ -253,6 +253,8 @@ input:focus {
   margin: var(--_m, 0.1875em 0.1875em 0.1875em 0.25em);
   position: relative;
   width: 1em;
+
+  vertical-align: middle;
 }
 [type="checkbox"]::after {
   background: var(--_bga, transparent);
